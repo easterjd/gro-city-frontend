@@ -1,0 +1,33 @@
+{
+  "name": "gro-city-frontend",
+  "version": "1.0.0",
+  "description": "A project which allows user to create plant project boards for planting projects.",
+  "main": "main.js",
+  "scripts": {
+    "build": "browserify scripts/main.js -o bundle.js",
+    "watch": "watchify scripts/main.js -o bundle.js",
+    "dev-server": "live-server .",
+    "dev": "run-all \"npm run watch\" \"npm run dev-server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easterjd/gro-city-frontend.git"
+  },
+  "keywords": [
+    "plants",
+    "gro-city",
+    "planting"
+  ],
+  "author": "Christopher Peterson, Dillon Easter, Surya Krishna Moorthy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/easterjd/gro-city-frontend/issues"
+  },
+  "homepage": "https://github.com/easterjd/gro-city-frontend#readme",
+  "dependencies": {
+    "browserify": "^16.2.2",
+    "live-server": "^1.2.0",
+    "run-all": "^1.0.1",
+    "watchify": "^3.11.0"
+  }
+}
