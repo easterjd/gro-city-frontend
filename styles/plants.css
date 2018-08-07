@@ -4,6 +4,10 @@
   padding: 0px;
 }
 
+.filter-form .row .col{
+  margin: 0px;
+}
+
 .duration-radio-div, .flower-conspicuous-radio-div, .soil-type-radio-div, .shade-tolerance-radio-div {
   display: flex;
 }
