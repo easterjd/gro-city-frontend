@@ -50,3 +50,7 @@ function timeFrom(board){
   }
   return timeLine;
 }
+
+module.exports = {
+  plantTemp
+}
