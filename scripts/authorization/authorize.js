@@ -1,4 +1,5 @@
 const request = require('../requests/requests.js');
+const validation = require('../validation/validation.js');
 
 function loginEvent(loginBtn) {
   loginBtn.addEventListener('click', (event) => {
@@ -6,6 +7,11 @@ function loginEvent(loginBtn) {
 
     const email = document.querySelector('.login-email').value;
     const password = document.querySelector('.login-password').value;
+
+    if (!validation.emailFormat.test(email) || !validation.passwordFormat.test(password)) {
+      validation.shakeNode(event.target)
+      return validation.showAndFadeError("Email/Password is not in correct format")
+    }
 
     loginUser(email, password);
   })
@@ -19,6 +25,12 @@ function signupEvent(signupBtn) {
     const last_name = document.querySelector('#last_name').value
     const email = document.querySelector('.signup-email').value
     const password = document.querySelector('.signup-password').value
+
+    if (!validation.nameFormat.test(first_name) || !validation.nameFormat.test(last_name)
+        || !validation.emailFormat.test(email) || !validation.passwordFormat.test(password)) {
+      validation.shakeNode(event.target)
+      return validation.showAndFadeError("The values entered are not in correct format")
+    }
 
     validateUser(first_name, last_name, email, password)
   })
@@ -35,7 +47,7 @@ function loginUser(email, password) {
       document.location.replace("./views/welcome.html")
     })
     .catch(e => {
-      console.log(e);
+      validation.showAndFadeError(e.response.data.error);
     })
 }
 
@@ -50,7 +62,7 @@ function validateUser(first_name, last_name, email, password) {
       if (response) loginUser(email, password)
     })
     .catch(e => {
-      console.log(e);
+      validation.showAndFadeError(e.response.data.error);
     })
 }
 
