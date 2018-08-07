@@ -14,19 +14,18 @@ const signupTemplate = () => {
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input class="signup-email" id="email" type="email" class="validate">
           <label for="email">Email</label>
         </div>
       </div>
-
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
+          <input class="signup-password" id="password" type="password" class="validate">
           <label for="password">Password</label>
         </div>
       </div>
       <div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Sign Up
+        <button class="btn waves-effect waves-light signup-btn" type="submit" name="action">Sign Up
         </button>
         <a class="login-link" href="#">Login</a>
       </div>
@@ -40,18 +39,18 @@ const loginTemplate = () => {
     <form>
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input class="login-email" id="email" type="email" class="validate">
           <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
+          <input class="login-password" id="password" type="password" class="validate">
           <label for="password">Password</label>
         </div>
       </div>
       <div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Login
+        <button class="btn waves-effect waves-light login-btn" type="submit" name="action">Login
         </button>
         <a class="create-account-link" href="#">Create New Account</a>
       </div>
