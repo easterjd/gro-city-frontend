@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout( () => {
     document.querySelector('#fill').setAttribute("fill", "white")
+    Array.from(document.querySelectorAll('.btn-flat')).forEach
   }, 3000)
   const lineDrawing1 = anime({
     targets: '#lineDrawing .lines path',
@@ -11,5 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
     direction: 'alternate',
     loop: 1
   })
-
 })
