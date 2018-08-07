@@ -1,1 +1,24 @@
+body {
+  background: linear-gradient(to bottom, #ffccff 0%, #009933 100%) fixed;
+}
 
+#fill {
+	fill-opacity: 1;
+	animation-name: fadeInFillOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+  animation-delay: 3s;
+  position: relative;
+  padding-top: 200px;
+  offset: 10px 30px;
+}
+
+@keyframes fadeInFillOpacity {
+	0% {
+		fill-opacity: 0;
+	}
+	100% {
+		fill-opacity: 1;
+	}
+}
