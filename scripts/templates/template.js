@@ -58,7 +58,30 @@ const loginTemplate = () => {
   </section>`;
 }
 
+const cardTemplate = () => {
+  return `<div class="col s4">
+    <div class="card">
+      <div class="card-image">
+        <img src="http://via.placeholder.com/350x150">
+        <span class="card-title">Card Title</span>
+      </div>
+      <div class="card-content">
+        <h6>${scientificName}</h6>
+      </div>
+      <div class="plant-card-footer">
+        <div class="card-action">
+          <a href="#" class="waves-effect waves-light btn">Add</a>
+        </div>
+        <div class="card-info">
+          <a href="#" class="waves-effect waves-light btn">Info</a>
+        </div>
+      </div>
+    </div>
+  </div>`
+}
+
 module.exports = {
   signupTemplate,
-  loginTemplate
+  loginTemplate,
+  cardTemplate
 };

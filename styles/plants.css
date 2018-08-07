@@ -1,10 +1,20 @@
-.filter-div{
+.filter-div {
   border: 2px solid black;
+  width: min-content;
+  padding: 0px;
 }
 
-.duration-radio-div, .flower-conspicuous-radio-div,
-.soil-type-radio-div,
-.shade-tolerance-radio-div
-{
+.duration-radio-div, .flower-conspicuous-radio-div, .soil-type-radio-div, .shade-tolerance-radio-div {
   display: flex;
+}
+
+.plant-card-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid grey;
+}
+
+.card-info {
+  margin-top: 16px;
+  padding-right: 10px;
 }
