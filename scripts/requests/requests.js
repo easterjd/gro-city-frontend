@@ -41,6 +41,15 @@ function deleteBoard (id) {
   })
 }
 
+function getBoardPlants(id) {
+  const token = localStorage.getItem('token');
+  return axios.get(`${baseURL}/boards/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  })
+}
+
 module.exports = {
   loginRequest,
   signUpRequest,
