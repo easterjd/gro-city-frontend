@@ -1,86 +1,24 @@
 const moment=require('moment')
 
-function boardsTemp(boards){
+function boardsBodyTemp(boards){
   return `
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Boards</title>
+  <div class="row" id="boardNav">
+    <div class="col s12">
+      <h4 align="center">My Boards</h4>
+    </div>
+   </div>
 
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-  </head>
-  <body>
-      <!-- PlaceHolder Nav -->
-    <nav class="black" role="navigation">
-      <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Gro.City</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      </div>
-    </nav>
-    <!--/PlaceHolder Nav -->
-
-    <!--Body -->
-    <div class="body">
-
-      <div class="row" id="boardNav">
-        <div class="col s12">
-          <h4 align="center">My Boards</h4>
-        </div>
-      </div>
-
-      <div class="row" id="boardsRow">
-
-      </div>
-  </div>
-      <!--/Body -->
-
-    <!--Footer -->
-    <footer class="page-footer teal" style="position: fixed; bottom: 0px; width: 100%;">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Company Bio</h5>
-            <p class="grey-text text-lighten-4">!!!Placeholder!!!</p>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-        Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Gro.City</a>
-        </div>
-      </div>
-    </footer>
-      <!-- /Footer -->
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
-
-    </body>
-  </html>
+   <div class="row" id="boardsRow">
+   </div>
   `
 }
 
 function boardCard(board){
+  const timeLine = timeFrom(board);
   return `
   <div class="col s4" style="border: 1px solid #42a5f5;">
     <div class="container" align="center">
-        <a class="waves-effect waves-teal btn-flat" style="padding-bottom: 50px;"><h5>Board Title</h5></a>
+        <a class="waves-effect waves-teal btn-flat" style="padding-bottom: 50px;"><h5>${board.title}</h5></a>
       <div class="divider"></div>
       <div class="row">
         <div class="col s6" align="center" >
@@ -90,6 +28,7 @@ function boardCard(board){
       <a class="waves-effect waves-light btn white-text" style="top: 10px" href="#">Delete Board</a>
       </div>
       </div>
+      <p>${timeLine}</p>
     </div>
   </div>
   `
@@ -97,80 +36,17 @@ function boardCard(board){
 
 function boardTemp(board){
   return `
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Boards</title>
-
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-  </head>
-  <body>
-      <!-- PlaceHolder Nav -->
-    <nav class="black" role="navigation">
-      <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Gro.City</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      </div>
-    </nav>
-    <!--/PlaceHolder Nav -->
-
-    <!--Body -->
-    <div class="body">
-
-      <div class="row" id="boardNav">
-        <div class="col s10 offset-s1">
-          <h4 align="center">Board Name</h4>
-        </div>
-        <div class="col s1" align="right">
-        <a class="waves-effect waves-light btn white-text" style="top: 30px" href="#">My Boards</a>
-      </div>
-      </div>
-
-      <div class="row" id="plantsRow">
-
-      </div>
+  <div class="row" id="boardNav">
+    <div class="col s10 offset-s1">
+      <h4 align="center">Board Name</h4>
+    </div>
+    <div class="col s1" align="right">
+      <a class="waves-effect waves-light btn white-text" style="top: 30px" href="#">My Boards</a>
+    </div>
   </div>
-      <!--/Body -->
 
-    <!--Footer -->
-    <footer class="page-footer teal" style="position: fixed; bottom: 0px; width: 100%;">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Company Bio</h5>
-            <p class="grey-text text-lighten-4">!!!Placeholder!!!</p>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-        Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Gro.City</a>
-        </div>
-      </div>
-    </footer>
-      <!-- /Footer -->
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
-
-    </body>
-  </html>
+  <div class="row" id="plantsRow">
+  </div>
   `
 }
 
@@ -226,8 +102,8 @@ function timeFrom(board){
 }
 
 module.exports = {
-  boardsTemp,
+  boardsBodyTemp,
   boardCard,
-  boardTemp,
+  boardBodyTemp,
   plantCard
 }

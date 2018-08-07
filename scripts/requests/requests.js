@@ -56,5 +56,6 @@ module.exports = {
   getBoards,
   createBoard,
   updateBoard,
-  deleteBoard
+  deleteBoard,
+  getBoardPlants
 }
