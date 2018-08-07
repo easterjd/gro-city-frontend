@@ -1,0 +1,49 @@
+body {
+  background: url(https://images.unsplash.com/photo-1530301947366-591c5750ef10?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c01145e8e53a439b2ab43a8d18cf6a8d&auto=format&fit=crop&w=1950&q=80);
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+nav .brand-logo {
+  margin-left: 5%;
+}
+
+nav {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.row {
+  margin-bottom: 0px !important;
+}
+
+button {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.login, .signup {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 350px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+}
+
+.login {
+  transform: translate(-50%, 50%);
+}
+
+.signup {
+  transform: translate(-50%, 35%);
+}
+
+.create-account-link, .login-link {
+  float: right;
+  margin-top: 20px;
+  padding-right: 20px;
+}
