@@ -1,5 +1,13 @@
 body {
-  background: linear-gradient(to bottom, #ffccff 0%, #009933 100%) fixed;
+  background: url(https://images.unsplash.com/photo-1530301947366-591c5750ef10?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c01145e8e53a439b2ab43a8d18cf6a8d&auto=format&fit=crop&w=1950&q=80);
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+nav {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #fill {
@@ -14,6 +22,8 @@ body {
   offset: 10px 30px;
 }
 
+
+
 @keyframes fadeInFillOpacity {
 	0% {
 		fill-opacity: 0;
@@ -21,4 +31,13 @@ body {
 	100% {
 		fill-opacity: 1;
 	}
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
