@@ -1,0 +1,10 @@
+.filter-div{
+  border: 2px solid black;
+}
+
+.duration-radio-div, .flower-conspicuous-radio-div,
+.soil-type-radio-div,
+.shade-tolerance-radio-div
+{
+  display: flex;
+}
