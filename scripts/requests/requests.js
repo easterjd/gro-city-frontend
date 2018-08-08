@@ -1,4 +1,3 @@
-// const axios = require('axios');
 const baseURL = `http://localhost:5000/api`;
 
 // API calls using axios
