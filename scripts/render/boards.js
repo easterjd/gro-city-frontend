@@ -21,17 +21,24 @@ async function populateBoards(){
   boardAction(boards);
 }
 
-async function boardAction(boards){
+function boardAction(boards){
   const eachBoardButton = document.querySelectorAll('.board-buttons')
-  eachBoardButton.forEach(function(button){
+
+  console.log(eachBoardButton);
+
+  eachBoardButton.forEach(async function(button){
     const id = button.getAttribute("name")
-    const plants = req.getBoardPlants(id);
+    const board = boards.find(obj => obj.id==id)
+    const resp= await req.getBoardPlants(id)
+    const plants = resp.data.response;
 
-    const body = document.querySelector('#body');
-    body.innerHTML = template.boardBodyTemp();
+    button.addEventListener('click', function(event){
+      const body = document.querySelector('#body');
+      body.innerHTML = template.boardBodyTemp(board);
 
-    const plantsRow = document.querySelector('#plantsRow')
-    plantsRow.innerHTML = template.plantsGroup(plants)
+      const plantsRow = document.querySelector('#plantsRow')
+      plantsRow.innerHTML = template.plantsGroup(plants)
+    })
   })
 }
 

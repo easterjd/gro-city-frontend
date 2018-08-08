@@ -45,7 +45,7 @@ function boardBodyTemp(board){
       <h4 align="center">${board.title}</h4>
     </div>
     <div class="col s1" align="right">
-      <a class="waves-effect waves-light btn white-text" style="top: 30px" href="#">My Boards</a>
+      <a class="waves-effect waves-light btn white-text" style="top: 30px" href="./my-boards.html">My Boards</a>
     </div>
   </div>
 
