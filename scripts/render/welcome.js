@@ -1,4 +1,4 @@
-const renderBoards = require('./boards.js');
+
 
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout( () => {
@@ -14,5 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
     direction: 'alternate',
     loop: 1
   })
-  renderBoards.renderMyBoards();
+  renderMyBoards();
 })
