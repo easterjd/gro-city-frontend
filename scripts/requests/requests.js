@@ -4,7 +4,10 @@ const baseURL = `http://localhost:5000/api`;
 const loginRequest = (body) => axios.post(`${baseURL}/users/login`, body);
 const signUpRequest = (body) => axios.post(`${baseURL}/users/signup`, body);
 
-module.exports = {
-  loginRequest,
-  signUpRequest
-};
+const plantRequest = () => axios.get(`${baseURL}/plants`)
+
+// module.exports = {
+//   loginRequest,
+//   signUpRequest,
+//   plantRequest
+// };

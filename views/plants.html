@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../styles/plants.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script defer src="../scripts/requests/requests.js" type="application/x-javascript"></script>
   <script defer src="../scripts/render/plants.js" type="application/x-javascript"></script>
   <meta name="viewport" content="width = device-width, initial-scale = 1, maximum-scale = 1">
 </head>
@@ -36,19 +37,19 @@
             <div class="duration-radio-div">
               <p>
                 <label>
-                <input class="annual" name="duration" type="radio" checked />
+                <input value="Annual" name="duration" type="radio" checked />
                 <span>Annual</span>
               </label>
               </p>
               <p>
                 <label>
-                <input class="biennial" name="duration" type="radio"  />
+                <input value="Biennial" name="duration" type="radio"  />
                 <span>Biennial</span>
               </label>
               </p>
               <p>
                 <label>
-                <input class="perennial" name="duration" type="radio" />
+                <input value="Perennial" name="duration" type="radio" />
                 <span>Perennial</span>
               </label>
               </p>
@@ -57,32 +58,35 @@
 
           <div class="growth-habit input-field col s10">
             <select>
-            <option value="" disabled selected>Choose Growth habit</option>
-            <option value="annual">Annual</option>
-            <option value="biennial">Biennial</option>
-            <option value="perennial">Perennial</option>
-          </select>
+              <option value="" disabled selected>Choose Growth habit</option>
+              <option value="Tree">Tree</option>
+              <option value="Shrub">Shrub</option>
+              <option value="Vine">Vine</option>
+              <option value="Forb/herb">Forb/herb</option>
+              <option value="Graminoid">Graminoid</option>
+              <option value="Subshrub">Subshrub</option>
+            </select>
           </div>
 
           <div class="active-growth-period input-field col s10">
             <select>
             <option value="" disabled selected>Choose active growth period</option>
-            <option value="spring">Spring</option>
-            <option value="summer">Summer</option>
-            <option value="fall">Fall</option>
-            <option value="winter">winter</option>
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
           </select>
           </div>
 
           <div class="flower-color input-field col s10">
             <select>
             <option value="" disabled selected>Choose flower color</option>
-            <option value="white">White</option>
-            <option value="yellow">Yellow</option>
-            <option value="brown">Brown</option>
-            <option value="green">Green</option>
-            <option value="red">Red</option>
-            <option value="purple">Purple</option>
+            <option value="White">White</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Brown">Brown</option>
+            <option value="Green">Green</option>
+            <option value="Red">Red</option>
+            <option value="Purple">Purple</option>
           </select>
           </div>
 
@@ -91,13 +95,13 @@
             <div class="flower-conspicuous-radio-div">
               <p>
                 <label>
-                <input class="flower-conspicuous-yes" name="flower-conspicuous" type="radio" checked />
+                <input value="Yes" name="flower-conspicuous" type="radio" checked />
                 <span>Yes</span>
               </label>
               </p>
               <p>
                 <label>
-                <input class="flower-conspicuous-no" name="flower-conspicuous" type="radio"  />
+                <input value="No" name="flower-conspicuous" type="radio"  />
                 <span>No</span>
               </label>
               </p>
@@ -109,19 +113,19 @@
             <div class="soil-type-radio-div">
               <p>
                 <label>
-                <input class="soil medium" name="soil" type="radio" checked />
+                <input value="Medium" class="soil medium" name="soil" type="radio" checked />
                 <span>Medium</span>
               </label>
               </p>
               <p>
                 <label>
-                <input class="soil coarse" name="soil" type="radio" />
+                <input value="Course" class="soil coarse" name="soil" type="radio" />
                 <span>Coarse</span>
               </label>
               </p>
               <p>
                 <label>
-                <input class="soil fine" name="soil" type="radio" />
+                <input value="Fine" class="soil fine" name="soil" type="radio" />
                 <span>Fine</span>
               </label>
               </p>
@@ -131,30 +135,30 @@
           <div class="moisture-level input-field col s10">
             <select>
             <option value="" disabled selected>Choose moisture level</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
           </div>
 
           <div class="shade-tolerance col s10">
-            <p>Soil Type</p>
+            <p>Shade Tolerance</p>
             <div class="shade-tolerance-radio-div">
               <p>
                 <label>
-                <input class="shade medium" name="shade" type="radio" checked />
+                <input value="Tolerant" class="shade medium" name="shade" type="radio" checked />
                 <span>Tolerant</span>
               </label>
               </p>
               <p>
                 <label>
-                <input class="shade coarse" name="shade" type="radio" />
+                <input value="Intolerant" class="shade coarse" name="shade" type="radio" />
                 <span>Intolerant</span>
               </label>
               </p>
               <p>
                 <label>
-                <input class="shade fine" name="shade" type="radio" />
+                <input value="Intermediate" class="shade fine" name="shade" type="radio" />
                 <span>Intermediate</span>
               </label>
               </p>
@@ -162,20 +166,24 @@
           </div>
 
           <p class="range-field col s10">Temperature Minimum(°F)
-            <input type="range" id="test5" min="0" max="150" />
+            <input type="range" id="test5" min="-79" max="52" />
           </p>
 
           <div class="bloom-period input-field col s10">
             <select>
             <option value="" disabled selected>Choose bloom period</option>
-            <option value="spring">Late Spring</option>
-            <option value="summer">Late Summer</option>
-            <option value="fall">Late Fall</option>
-            <option value="winter">Late Winter</option>
-            <option value="spring">Early Spring</option>
-            <option value="summer">Early Summer</option>
-            <option value="fall">Early Fall</option>
-            <option value="winter">Early Winter</option>
+            <option value="Early Spring">Early Spring</option>
+            <option value="Spring">Spring</option>
+            <option value="Mid Spring">Mid Spring</option>
+            <option value="Late Spring">Late Spring</option>
+            <option value="Early Summer">Early Summer</option>
+            <option value="Summer">Summer</option>
+            <option value="Mid Summer">Mid Summer</option>
+            <option value="Late Summer">Late Summer</option>
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
+            <option value="Late Winter">Late Winter</option>
+            <option value="Indeterminate">Indeterminate</option>
           </select>
           </div>
         </div>
