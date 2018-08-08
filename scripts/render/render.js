@@ -4,11 +4,13 @@ const validation = require('../validation/validation.js');
 
 const loginSignUpDiv = document.querySelector(".login-signup");
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  loginSignUpDiv.innerHTML = template.loginTemplate();
-  loadSignUp();
-  loadLogInTemplate();
-});
+if (window.location.href.indexOf('/index.html') > -1) {
+  document.addEventListener("DOMContentLoaded", (event) => {
+    loginSignUpDiv.innerHTML = template.loginTemplate();
+    loadSignUp();
+    loadLogInTemplate();
+  });
+}
 
 const loadSignUp = () => {
   const signUpLink = document.querySelector(".create-account-link");
