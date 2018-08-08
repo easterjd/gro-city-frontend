@@ -115,7 +115,7 @@ function updateFormTemplate(title) {
 
 function saveTemplate() {
   return `
-    <div class="col s6" align="center">
+    <div class="col s6" style="margin-top: 10px;" align="center">
     <a class="waves-effect waves-light btn white-text save-board" style="top:10px" href="#">Save Title</a>
     </div>
   `

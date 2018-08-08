@@ -30,7 +30,7 @@ function boardAction(boards){
   eachBoardButton.forEach(async function(button){
     const id = button.getAttribute("name")
     const board = boards.find(obj => obj.id==id)
-    const resp= await req.getBoardPlants(id)
+    const resp = await req.getBoardPlants(id)
     const plants = resp.data.response;
 
     button.addEventListener('click', function(event){
@@ -50,17 +50,6 @@ function renderMyBoards(){
     button.addEventListener('click', function(event){
       event.preventDefault();
       document.location.replace("./views/my-boards.html")
-    })
-  })
-}
-
-function updateBoards(){
-  const updateBoardBtns = Array.from(document.querySelectorAll(".update-board"));
-  updateBoardBtns.forEach(btn => {
-    btn.addEventListener("click", (event) => {
-      event.target.parentNode.innerHTML = template.saveTemplate();
-        console.log(event.target.parentNode);
-
     })
   })
 }
