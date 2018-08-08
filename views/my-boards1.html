@@ -10,8 +10,7 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
-      <script defer charset="utf-8" src="../bundle.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 </head>
 <body>
     <!-- PlaceHolder Nav -->
@@ -33,9 +32,18 @@
   <!--Body -->
   <div class="body">
 
-    <h4 align="center">Board Name</h4>
+    <div class="row" id="boardNav">
+      <div class="col s10 offset-s1">
+        <h4 align="center">Board Name</h4>
+      </div>
+      <div class="col s1" align="right">
+      <a class="waves-effect waves-light btn white-text" style="top: 30px" href="#">My Boards</a>
+    </div>
+    </div>
 
     <div class="row" id="plantsRow">
+
+
       <div class="col s4">
           <div class="card medium blue">
           <div class="card-content activator blue darken-1 waves-effect waves-block waves-light">
@@ -63,7 +71,7 @@
               Temperature Minimum: -23 °F<br>
               Bloom Period: Late Spring<br>
               Commercial Availability: No Known Source
-            </p>
+          </p>
           </div>
         </div>
       </div>
@@ -158,6 +166,8 @@
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
 
   </body>
 </html>

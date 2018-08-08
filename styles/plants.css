@@ -1,10 +1,16 @@
 .filter-div {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: min-content;
   padding: 0px;
+  height: 83vh;
+  overflow: hidden;
 }
 
-.filter-form .row .col{
+.filter-div:hover {
+  overflow-y: auto;
+}
+
+.filter-form .row .col {
   margin: 0px;
 }
 
@@ -21,4 +27,16 @@
 .card-info {
   margin-top: 16px;
   padding-right: 10px;
+}
+
+[type="radio"]:not(:checked)+span, [type="radio"]:checked+span {
+  padding-left: 25px !important;
+}
+
+* {
+  font-size: small !important;
+}
+
+.row .col.l3 {
+  width: 20% !important;
 }

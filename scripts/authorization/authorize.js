@@ -1,4 +1,5 @@
 const request = require('../requests/requests.js');
+const validation = require('../validation/validation.js');
 
 function loginEvent(loginBtn) {
   loginBtn.addEventListener('click', (event) => {
@@ -7,20 +8,12 @@ function loginEvent(loginBtn) {
     const email = document.querySelector('.login-email').value;
     const password = document.querySelector('.login-password').value;
 
+    if (!validation.emailFormat.test(email) || !validation.passwordFormat.test(password)) {
+      validation.shakeNode(event.target)
+      return validation.showAndFadeError("Email/Password is not in correct format")
+    }
+
     loginUser(email, password);
-  })
-}
-
-function signupEvent(signupBtn) {
-  signupBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-
-    const first_name = document.querySelector('#first_name').value
-    const last_name = document.querySelector('#last_name').value
-    const email = document.querySelector('.signup-email').value
-    const password = document.querySelector('.signup-password').value
-
-    validateUser(first_name, last_name, email, password)
   })
 }
 
@@ -35,11 +28,30 @@ function loginUser(email, password) {
       document.location.replace("./views/welcome.html")
     })
     .catch(e => {
-      console.log(e);
+      validation.showAndFadeError(e.response.data.error);
     })
 }
 
-function validateUser(first_name, last_name, email, password) {
+function signupEvent(signupBtn) {
+  signupBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+
+    const first_name = document.querySelector('#first_name').value
+    const last_name = document.querySelector('#last_name').value
+    const email = document.querySelector('.signup-email').value
+    const password = document.querySelector('.signup-password').value
+
+    if (!validation.nameFormat.test(first_name) || !validation.nameFormat.test(last_name) ||
+      !validation.emailFormat.test(email) || !validation.passwordFormat.test(password)) {
+      validation.shakeNode(event.target)
+      return validation.showAndFadeError("The values entered are not in correct format")
+    }
+
+    createUser(first_name, last_name, email, password)
+  })
+}
+
+function createUser(first_name, last_name, email, password) {
   request.signUpRequest({
       first_name,
       last_name,
@@ -47,10 +59,12 @@ function validateUser(first_name, last_name, email, password) {
       password
     })
     .then(response => {
-      if (response) loginUser(email, password)
+      const token = response.data.token
+      localStorage.setItem('token', token)
+      document.location.replace("./views/welcome.html")
     })
     .catch(e => {
-      console.log(e);
+      validation.showAndFadeError(e.response.data.error);
     })
 }
 
