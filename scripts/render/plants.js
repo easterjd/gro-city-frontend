@@ -1,6 +1,8 @@
 const templates = require('../templates/template')
 const request = require('../requests/requests.js')
 
+let page = 1
+
 let searchState = {
   scientific_name: "",
   data: {
@@ -28,8 +30,8 @@ if (window.location.href.indexOf('/views/plants.html') > -1) {
       option: ""
     });
     formListeners()
-    const allPlants = await getPlants()
-    renderPlants(allPlants)
+    const somePlants = await getSomePlants(searchState, page)
+    renderPlants(somePlants)
   });
 }
 
@@ -47,6 +49,7 @@ function formListeners () {
   searchShade()
   searchMinTemp()
   searchBloom()
+  pagination()
 }
 
 async function getPlants() {
@@ -70,12 +73,17 @@ async function getPlants() {
   return allPlants.data.response
 }
 
+async function getSomePlants (searchState, page) {
+  const somePlants = await request.plantPage(searchState, page)
+  return somePlants
+}
+
 function searchName() {
   const nameInput = document.querySelector('#scientific-name')
   nameInput.addEventListener('blur', (e) => {
     searchState.scientific_name = nameInput.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   })
 }
@@ -86,7 +94,7 @@ function searchDuration() {
     console.log(e.target.value)
     searchState.data.duration = e.target.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   }))
 }
@@ -97,7 +105,7 @@ function searchHabit () {
     console.log(habitInput.value)
     searchState.data.habit = habitInput.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   })
 }
@@ -108,7 +116,7 @@ function searchGrowth () {
     console.log(growthInput.value)
     searchState.data.growPeriod = growthInput.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   })
 }
@@ -119,7 +127,7 @@ function searchFlowerColor () {
     console.log(colorInput.value)
     searchState.data.flowerColor = colorInput.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   })
 }
@@ -130,7 +138,7 @@ function searchFlowerConsp() {
     console.log(e.target.value)
     searchState.data.flowerConsp = e.target.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   }))
 }
@@ -157,7 +165,7 @@ function searchSoil() {
       searchState.data.fineSoil = ""
     }
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   }))
 }
@@ -168,7 +176,7 @@ function searchMoisture() {
     console.log(moistureInput.value)
     searchState.data.moisture = moistureInput.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   })
 }
@@ -179,7 +187,7 @@ function searchShade() {
     console.log(e.target.value)
     searchState.data.shade = e.target.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   }))
 }
@@ -190,7 +198,7 @@ function searchMinTemp() {
     console.log(tempInput.value)
     searchState.data.tempMin = tempInput.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   })
 }
@@ -209,45 +217,64 @@ function searchBloom() {
     console.log(bloomInput.value)
     searchState.data.bloomPeriod = bloomInput.value
     setTimeout( () => {
-      search(searchState)
+      search(searchState, page)
     }, 2000)
   })
 }
 
-async function search (searchState) {
-  const allPlants = await getPlants()
-  const filterPlants = allPlants.filter(plant => {
-    if (searchState['scientific_name'] !== "") {
-      // console.log(plant['scientific_name'].includes(searchState['scientific_name']))
-      if (!plant['scientific_name'].includes(searchState['scientific_name'])) return false
-    }
-    if (searchState.data['habit'] !== "") {
-      if (!plant.data['habit'].includes(searchState.data['habit'])) return false
-    }
-    if (searchState.data['growPeriod'] !== "") {
-      if (!plant.data['growPeriod'].includes(searchState.data['growPeriod'])) return false
-    }
-    if (searchState.data['flowerColor'] !== "") {
-      if (!plant.data['flowerColor'].includes(searchState.data['flowerColor'])) return false
-    }
-    if (searchState.data['tempMin'] !== "") {
-      if (parseNegInt(plant.data['tempMin']) > parseNegInt(searchState.data['tempMin'])) return false
-    }
-    for (let key in searchState.data) {
-      if (key !== 'habit' && key !== 'growPeriod' && key !== 'flowerColor' && key !== 'tempMin') {
-        let filterValue = searchState.data[key]
-        if (filterValue !== "" && plant.data[key] !== filterValue) return false
+function pagination () {
+  const pages = Array.from(document.querySelectorAll('.pagination a'))
+  pages.forEach(pageNum => pageNum.addEventListener('click', (e) => {
+    e.preventDefault()
+    const number = e.target.innerHTML
+    pages.forEach(pageNum => {
+      if (pageNum.parentNode.classList.contains('active')) {
+        pageNum.parentNode.classList.remove('active')
       }
-    }
-    return true
-  })
-  renderPlants(filterPlants)
+    })
+    e.target.parentNode.classList.add('active')
+    console.log(number)
+    page = number
+    console.log(page)
+    search(searchState, page)
+  }))
+}
+
+async function search (searchState, page) {
+  const somePlants = await getSomePlants(searchState, page)
+  // const allPlants = await getPlants()
+  // const filterPlants = allPlants.filter(plant => {
+  //   if (searchState['scientific_name'] !== "") {
+  //     // console.log(plant['scientific_name'].includes(searchState['scientific_name']))
+  //     if (!plant['scientific_name'].includes(searchState['scientific_name'])) return false
+  //   }
+  //   if (searchState.data['habit'] !== "") {
+  //     if (!plant.data['habit'].includes(searchState.data['habit'])) return false
+  //   }
+  //   if (searchState.data['growPeriod'] !== "") {
+  //     if (!plant.data['growPeriod'].includes(searchState.data['growPeriod'])) return false
+  //   }
+  //   if (searchState.data['flowerColor'] !== "") {
+  //     if (!plant.data['flowerColor'].includes(searchState.data['flowerColor'])) return false
+  //   }
+  //   if (searchState.data['tempMin'] !== "") {
+  //     if (parseNegInt(plant.data['tempMin']) > parseNegInt(searchState.data['tempMin'])) return false
+  //   }
+  //   for (let key in searchState.data) {
+  //     if (key !== 'habit' && key !== 'growPeriod' && key !== 'flowerColor' && key !== 'tempMin') {
+  //       let filterValue = searchState.data[key]
+  //       if (filterValue !== "" && plant.data[key] !== filterValue) return false
+  //     }
+  //   }
+  //   return true
+  // })
+  renderPlants(somePlants)
 }
 
 function renderPlants (array) {
   var container = document.querySelector('.plant-cards-container')
   container.innerHTML = ""
-  array.forEach(plant => {
-    container += templates.cardTemplate(plant)
+  array.data.response.forEach(plant => {
+    container.innerHTML += templates.cardTemplate(plant)
   })
 }
