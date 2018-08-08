@@ -14,5 +14,4 @@ document.addEventListener('DOMContentLoaded', () => {
     direction: 'alternate',
     loop: 1
   })
-  renderMyBoards();
 })

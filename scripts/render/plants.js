@@ -1,4 +1,5 @@
 const templates = require('../templates/template')
+const request = require('../requests/requests.js')
 
 let searchState = {
   scientific_name: "",
@@ -49,7 +50,7 @@ function formListeners () {
 }
 
 async function getPlants() {
-  const allPlants = await plantRequest()
+  const allPlants = await request.plantRequest()
   console.log(allPlants.data.response)
   // const tempHigh = allPlants.data.response.map(plant => {
   //   if (plant.data.tempMin[0] === '-') {
@@ -244,7 +245,7 @@ async function search (searchState) {
 }
 
 function renderPlants (array) {
-  const container = document.querySelector('.plant-cards-container')
+  var container = document.querySelector('.plant-cards-container')
   container.innerHTML = ""
   array.forEach(plant => {
     container += templates.cardTemplate(plant)
