@@ -6,6 +6,7 @@ const req = require('../requests/requests.js')
 if(window.location.href.indexOf("my-boards.html") > -1) {
   document.addEventListener('DOMContentLoaded', () => {
     populateBoards();
+
   })
 }
 
@@ -17,6 +18,42 @@ async function populateBoards(){
 
   const boardsRow = document.querySelector('#boardsRow')
   boardsRow.innerHTML = template.boardsGroup(boards);
+
+  boardAction(boards);
+  updateBoards()
+  deleteBoardAction()
+}
+
+function deleteBoardAction(){
+  const eachDeleteButton = document.querySelectorAll('.delete-board-buttons')
+
+  eachDeleteButton.forEach(async function(button){
+    button.addEventListener('click', async function(event){
+      const id = button.getAttribute("name")
+      const resp = await req.deleteBoard(id)
+      populateBoards();
+    })
+  })
+}
+
+function boardAction(boards){
+  const eachBoardButton = document.querySelectorAll('.board-buttons')
+
+  eachBoardButton.forEach(function(button){
+
+    button.addEventListener('click', async function(event){
+      const id = button.getAttribute("name")
+      const board = boards.find(obj => obj.id==id)
+      const resp= await req.getBoardPlants(id)
+      const plants = resp.data.response;
+
+      const body = document.querySelector('#body');
+      body.innerHTML = template.boardBodyTemp(board);
+
+      const plantsRow = document.querySelector('#plantsRow')
+      plantsRow.innerHTML = template.plantsGroup(plants)
+    })
+  })
 }
 
 function renderMyBoards(){
@@ -27,6 +64,32 @@ function renderMyBoards(){
       event.preventDefault();
       document.location.replace("./views/my-boards.html")
     })
+  })
+}
+function updateBoards() {
+  const updateBoardBtns = Array.from(document.querySelectorAll(".update-board"));
+  updateBoardBtns.forEach(btn => {
+    btn.addEventListener("click", (event) => {
+      event.target.parentNode.innerHTML = template.saveTemplate();
+      const id = btn.getAttribute("data-board-id");
+      const oldTitle = document.querySelector(`.board-buttons[name="${id}"]`);
+      const replaceTitle = template.updateFormTemplate(oldTitle.firstChild.innerHTML);
+      oldTitle.replaceWith(replaceTitle);
+
+       const saveBtn = document.querySelector(".save-board");
+       saveUpdate(id);
+    })
+  })
+}
+
+function saveUpdate(id) {
+  const saveBtn = document.querySelector(".save-board");
+  saveBtn.addEventListener("click", (event) => {
+      const title = document.querySelector(".new-title").value;
+    req.updateBoard(id, {title})
+    .then((resp) => {
+    populateBoards()
+  });
   })
 }
 
