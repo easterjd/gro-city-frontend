@@ -22,7 +22,7 @@ function boardCard(board){
   return `
   <div class="col s4" style="border: 1px solid #42a5f5;">
     <div class="container" align="center">
-        <a class="waves-effect waves-teal btn-flat" style="padding-bottom: 50px;"><h5>${board.title}</h5></a>
+        <a class="board-buttons waves-effect waves-teal btn-flat" name="${board.id}" style="padding-bottom: 50px;"><h5>${board.title}</h5></a>
       <div class="divider"></div>
       <div class="row">
         <div class="col s6" align="center" >
@@ -45,7 +45,7 @@ function boardBodyTemp(board){
       <h4 align="center">${board.title}</h4>
     </div>
     <div class="col s1" align="right">
-      <a class="waves-effect waves-light btn white-text" style="top: 30px" href="#">My Boards</a>
+      <a class="waves-effect waves-light btn white-text" style="top: 30px" href="./my-boards.html">My Boards</a>
     </div>
   </div>
 
