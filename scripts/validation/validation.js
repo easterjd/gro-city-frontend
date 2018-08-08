@@ -5,10 +5,10 @@ const passwordFormat = /.{8,}/;
 const changeInputBoxStyle = (e, format) => {
   if (e.target.value === "" || format.test(e.target.value)) {
     e.target.removeAttribute("style");
-  }else if (!format.test(e.target.value)) {
+  } else if (!format.test(e.target.value)) {
     e.target.style.color = "rgb(255, 69, 0)";
-    e.target.style.borderColor = "rgba(255, 69, 0, 0.5)";
-    e.target.style.boxShadow = "0 0 8px rgba(250, 128, 114, 0.9)";
+    e.target.style.borderBottomColor = "rgba(255, 69, 0, 0.5)";
+    e.target.style.boxShadow = "0px 1px 1px -1px rgba(250, 128, 114, 0.9)";
   };
 };
 
@@ -28,18 +28,31 @@ const addPasswordValidation = () => {
   passwords.forEach(password => password.addEventListener("keyup", (e) => changeInputBoxStyle(e, passwordFormat)));
 }
 
-
 //Animate the login/signup button if invalid
-const shakeNode =  (node) => {
+const shakeNode = (node) => {
   node.style.boxShadow = "0 0 8px rgba(250, 128, 114, 0.9)";
-  node.animate([
-    {transform: "translateX(-10px)"},
-    {transform: "translateX(+10px)"},
-    {transform: "translateX(-10px)"},
-    {transform: "translateX(+10px)"},
-    {transform: "translateX(-10px)"}
-  ], {duration: 200, iterations:1})
-  setTimeout(() => { node.removeAttribute("style") }, 800);
+  node.animate([{
+      transform: "translateX(-10px)"
+    },
+    {
+      transform: "translateX(+10px)"
+    },
+    {
+      transform: "translateX(-10px)"
+    },
+    {
+      transform: "translateX(+10px)"
+    },
+    {
+      transform: "translateX(-10px)"
+    }
+  ], {
+    duration: 200,
+    iterations: 1
+  })
+  setTimeout(() => {
+    node.removeAttribute("style")
+  }, 800);
 };
 
 //Show and hide the error Message
@@ -47,7 +60,9 @@ const showAndFadeError = (error) => {
   const loginSignupError = document.querySelector(".login-signup-error");
   loginSignupError.style.display = 'block';
   loginSignupError.innerHTML = error;
-  setTimeout(() => { loginSignupError.style.display = 'none'; }, 3000);
+  setTimeout(() => {
+    loginSignupError.style.display = 'none';
+  }, 3000);
 };
 
 module.exports = {

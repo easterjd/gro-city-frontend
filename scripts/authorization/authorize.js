@@ -17,25 +17,6 @@ function loginEvent(loginBtn) {
   })
 }
 
-function signupEvent(signupBtn) {
-  signupBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-
-    const first_name = document.querySelector('#first_name').value
-    const last_name = document.querySelector('#last_name').value
-    const email = document.querySelector('.signup-email').value
-    const password = document.querySelector('.signup-password').value
-
-    if (!validation.nameFormat.test(first_name) || !validation.nameFormat.test(last_name)
-        || !validation.emailFormat.test(email) || !validation.passwordFormat.test(password)) {
-      validation.shakeNode(event.target)
-      return validation.showAndFadeError("The values entered are not in correct format")
-    }
-
-    validateUser(first_name, last_name, email, password)
-  })
-}
-
 function loginUser(email, password) {
   request.loginRequest({
       email,
@@ -51,7 +32,26 @@ function loginUser(email, password) {
     })
 }
 
-function validateUser(first_name, last_name, email, password) {
+function signupEvent(signupBtn) {
+  signupBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+
+    const first_name = document.querySelector('#first_name').value
+    const last_name = document.querySelector('#last_name').value
+    const email = document.querySelector('.signup-email').value
+    const password = document.querySelector('.signup-password').value
+
+    if (!validation.nameFormat.test(first_name) || !validation.nameFormat.test(last_name) ||
+      !validation.emailFormat.test(email) || !validation.passwordFormat.test(password)) {
+      validation.shakeNode(event.target)
+      return validation.showAndFadeError("The values entered are not in correct format")
+    }
+
+    createUser(first_name, last_name, email, password)
+  })
+}
+
+function createUser(first_name, last_name, email, password) {
   request.signUpRequest({
       first_name,
       last_name,
@@ -59,7 +59,9 @@ function validateUser(first_name, last_name, email, password) {
       password
     })
     .then(response => {
-      if (response) loginUser(email, password)
+      const token = response.data.token
+      localStorage.setItem('token', token)
+      document.location.replace("./views/welcome.html")
     })
     .catch(e => {
       validation.showAndFadeError(e.response.data.error);

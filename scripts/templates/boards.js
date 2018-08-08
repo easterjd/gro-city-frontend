@@ -1,6 +1,56 @@
 const moment=require('moment')
 
-function plantTemp(plant){
+function boardsBodyTemp(boards){
+  return `
+  <div class="row" id="boardNav">
+    <div class="col s12">
+      <h4 align="center">My Boards</h4>
+    </div>
+   </div>
+
+   <div class="row" id="boardsRow">
+   </div>
+  `
+}
+
+function boardCard(board){
+  const timeLine = timeFrom(board);
+  return `
+  <div class="col s4" style="border: 1px solid #42a5f5;">
+    <div class="container" align="center">
+        <a class="waves-effect waves-teal btn-flat" style="padding-bottom: 50px;"><h5>${board.title}</h5></a>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col s6" align="center" >
+        <a class="waves-effect waves-light btn white-text" style="top: 10px" href="#">Update Title</a>
+      </div>
+      <div class="col s6" align="center">
+      <a class="waves-effect waves-light btn white-text" style="top: 10px" href="#">Delete Board</a>
+      </div>
+      </div>
+      <p>${timeLine}</p>
+    </div>
+  </div>
+  `
+}
+
+function boardTemp(board){
+  return `
+  <div class="row" id="boardNav">
+    <div class="col s10 offset-s1">
+      <h4 align="center">Board Name</h4>
+    </div>
+    <div class="col s1" align="right">
+      <a class="waves-effect waves-light btn white-text" style="top: 30px" href="#">My Boards</a>
+    </div>
+  </div>
+
+  <div class="row" id="plantsRow">
+  </div>
+  `
+}
+
+function plantCard(plant){
   return `
   <div class="col s4">
       <div class="card medium blue">
@@ -52,5 +102,8 @@ function timeFrom(board){
 }
 
 module.exports = {
-  plantTemp
+  boardsBodyTemp,
+  boardCard,
+  boardBodyTemp,
+  plantCard
 }
