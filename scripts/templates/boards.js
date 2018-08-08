@@ -13,6 +13,10 @@ function boardsBodyTemp(boards){
   `
 }
 
+function boardsGroup(boards){
+  return boards.map(boardCard).join('')
+}
+
 function boardCard(board){
   const timeLine = timeFrom(board);
   return `
@@ -34,7 +38,7 @@ function boardCard(board){
   `
 }
 
-function boardTemp(board){
+function boardBodyTemp(board){
   return `
   <div class="row" id="boardNav">
     <div class="col s10 offset-s1">
@@ -89,8 +93,8 @@ function plantCard(plant){
 
 //returns either line 'Created ___ ago' or 'Updated ___ ago' depending on if the data has been updated or not
 function timeFrom(board){
-  const time;
-  const timeLine;
+  var time
+  var timeLine
   if(board.created_at===board.updated_at){ // board has yet to be updated
     time = moment(board.created_at).toNow(true);
     timeLine = `Created ${time} ago`;
@@ -103,6 +107,7 @@ function timeFrom(board){
 
 module.exports = {
   boardsBodyTemp,
+  boardsGroup,
   boardCard,
   boardBodyTemp,
   plantCard

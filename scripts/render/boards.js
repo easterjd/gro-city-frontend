@@ -11,5 +11,9 @@ async function populateBoards(){
   body.innerHTML = template.boardsBodyTemp()
 
   const boardsRow = document.querySelector('#boardsRow')
+  boardsRow.innerHTML = template.boardsGroup(boards);
+}
 
+module.exports = {
+  populateBoards
 }
