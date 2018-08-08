@@ -1,3 +1,5 @@
+const templates = require('../templates/template')
+
 let searchState = {
   scientific_name: "",
   data: {
@@ -18,13 +20,21 @@ let searchState = {
   }
 }
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems, {
-    option: ""
+if (window.location.href.indexOf('/views/plants.html') > -1) {
+  document.addEventListener('DOMContentLoaded', async function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {
+      option: ""
+    });
+    formListeners()
+    const allPlants = await getPlants()
+    renderPlants(allPlants)
   });
-  getPlants()
+}
+
+
+function formListeners () {
+  // getPlants()
   searchName()
   searchDuration()
   searchHabit()
@@ -36,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
   searchShade()
   searchMinTemp()
   searchBloom()
-});
+}
 
 async function getPlants() {
   const allPlants = await plantRequest()
@@ -230,5 +240,13 @@ async function search (searchState) {
     }
     return true
   })
-  console.log(filterPlants)
+  renderPlants(filterPlants)
+}
+
+function renderPlants (array) {
+  const container = document.querySelector('.plant-cards-container')
+  container.innerHTML = ""
+  array.forEach(plant => {
+    container += templates.cardTemplate(plant)
+  })
 }
