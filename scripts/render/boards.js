@@ -83,15 +83,13 @@ function updateBoards() {
 }
 
 function saveUpdate(id) {
-  console.log("save");
-  const title = document.querySelector(".new-title");
-  console.log(title);
   const saveBtn = document.querySelector(".save-board");
   saveBtn.addEventListener("click", (event) => {
+      const title = document.querySelector(".new-title").value;
     req.updateBoard(id, {title})
     .then((resp) => {
-
-    });
+    populateBoards()
+  });
   })
 }
 
