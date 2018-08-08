@@ -1,6 +1,6 @@
-const moment=require('moment')
+const moment = require('moment')
 
-function boardsBodyTemp(boards){
+function boardsBodyTemp(boards) {
   return `
   <div class="row" id="boardNav">
     <div class="col s12">
@@ -13,11 +13,11 @@ function boardsBodyTemp(boards){
   `
 }
 
-function boardsGroup(boards){
+function boardsGroup(boards) {
   return boards.map(boardCard).join('')
 }
 
-function boardCard(board){
+function boardCard(board) {
   const timeLine = timeFrom(board);
   return `
   <div class="col s4" style="border: 1px solid #42a5f5;">
@@ -25,8 +25,8 @@ function boardCard(board){
         <a class="waves-effect waves-teal btn-flat" style="padding-bottom: 50px;"><h5>${board.title}</h5></a>
       <div class="divider"></div>
       <div class="row">
-        <div class="col s6" align="center" >
-        <a class="waves-effect waves-light btn white-text" style="top: 10px" href="#">Update Title</a>
+      <div class="col s6" align="center" >
+        <a class="waves-effect waves-light btn white-text update-board" data-board-id="${board.id} style="top: 10px" href="#">Update Title</a>
       </div>
       <div class="col s6" align="center">
       <a class="waves-effect waves-light btn white-text" style="top: 10px" href="#">Delete Board</a>
@@ -38,7 +38,7 @@ function boardCard(board){
   `
 }
 
-function boardBodyTemp(board){
+function boardBodyTemp(board) {
   return `
   <div class="row" id="boardNav">
     <div class="col s10 offset-s1">
@@ -54,11 +54,11 @@ function boardBodyTemp(board){
   `
 }
 
-function plantsGroup(plants){
+function plantsGroup(plants) {
   return plants.map(plantCard).join('')
 }
 
-function plantCard(plant){
+function plantCard(plant) {
   return `
   <div class="col s4">
       <div class="card medium blue">
@@ -96,10 +96,10 @@ function plantCard(plant){
 }
 
 //returns either line 'Created ___ ago' or 'Updated ___ ago' depending on if the data has been updated or not
-function timeFrom(board){
+function timeFrom(board) {
   var time
   var timeLine
-  if(board.created_at===board.updated_at){ // board has yet to be updated
+  if (board.created_at === board.updated_at) { // board has yet to be updated
     time = moment(board.created_at).toNow(true);
     timeLine = `Created ${time} ago`;
   } else { //board has been updated
@@ -109,11 +109,25 @@ function timeFrom(board){
   return timeLine;
 }
 
+function updateFormTemplate(title) {
+  return `<input type="text" class="new-title">${title}`
+}
+
+function saveTemplate() {
+  return `
+    <div class="col s6" align="center">
+    <a class="waves-effect waves-light btn white-text save-board" style="top:10px" href="#">Save Title</a>
+    </div>
+  `
+}
+
 module.exports = {
   boardsBodyTemp,
   boardsGroup,
   boardCard,
   boardBodyTemp,
   plantsGroup,
-  plantCard
+  plantCard,
+  saveTemplate,
+  updateFormTemplate
 }
