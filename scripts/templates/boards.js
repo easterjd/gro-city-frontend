@@ -114,7 +114,7 @@ function updateFormTemplate(title) {
   let input = document.createElement("input");
   input.setAttribute("type", "text");
   input.classList.add("new-title");
-  input.setAttribute("value", `"${title}"`);
+  input.setAttribute("value", `${title}`);
   input.setAttribute("style", `text-align:center;`);
 
   return input;
