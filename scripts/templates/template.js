@@ -58,7 +58,7 @@ const loginTemplate = () => {
   </section>`;
 }
 
-const cardTemplate = () => {
+const cardTemplate = (data) => {
   return `<div class="col s4">
     <div class="card">
       <div class="card-image">
@@ -66,7 +66,7 @@ const cardTemplate = () => {
         <span class="card-title">Card Title</span>
       </div>
       <div class="card-content">
-        <h6>${scientificName}</h6>
+        <h6>${data.scientific_name}</h6>
       </div>
       <div class="plant-card-footer">
         <div class="card-action">
