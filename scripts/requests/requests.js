@@ -6,6 +6,7 @@ const loginRequest = (body) => axios.post(`${baseURL}/users/login`, body);
 const signUpRequest = (body) => axios.post(`${baseURL}/users/signup`, body);
 
 const plantRequest = () => axios.get(`${baseURL}/plants`)
+const plantPage = (body, page) => axios.post(`${baseURL}/plants/${page}`, body)
 
 function getBoards () {
   const token = localStorage.getItem('token');
@@ -60,5 +61,6 @@ module.exports = {
   updateBoard,
   deleteBoard,
   getBoardPlants,
-  plantRequest
+  plantRequest,
+  plantPage
 }
