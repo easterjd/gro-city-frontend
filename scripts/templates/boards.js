@@ -42,7 +42,7 @@ function boardBodyTemp(board){
   return `
   <div class="row" id="boardNav">
     <div class="col s10 offset-s1">
-      <h4 align="center">Board Name</h4>
+      <h4 align="center">${board.title}</h4>
     </div>
     <div class="col s1" align="right">
       <a class="waves-effect waves-light btn white-text" style="top: 30px" href="#">My Boards</a>
@@ -52,6 +52,10 @@ function boardBodyTemp(board){
   <div class="row" id="plantsRow">
   </div>
   `
+}
+
+function plantsGroup(plants){
+  return plants.map(plantCard).join('')
 }
 
 function plantCard(plant){
@@ -110,5 +114,6 @@ module.exports = {
   boardsGroup,
   boardCard,
   boardBodyTemp,
+  plantsGroup,
   plantCard
 }

@@ -14,6 +14,21 @@ async function populateBoards(){
   boardsRow.innerHTML = template.boardsGroup(boards);
 }
 
+//passes a specific board, to create the board template with board.name as title, and plant cards
+async function populatePlants(board){
+  const resp = await req.getBoardPlants(board.id);
+  const plants = resp.data.response;
+
+  const body = document.querySelector('#body');
+  body.innerHTML = template.boardBodyTemp(board)
+
+  const plantsRow = document.querySelector('#plantsRow')
+  plantsRow.innerHTML = template.plantsGroup(plants);
+}
+
+
+
 module.exports = {
-  populateBoards
+  populateBoards,
+  populatePlants
 }
