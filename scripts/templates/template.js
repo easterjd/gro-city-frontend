@@ -4,11 +4,11 @@ const signupTemplate = () => {
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate">
+          <input class="name" id="first_name" type="text" class="validate">
           <label for="first_name">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
+          <input class="name" id="last_name" type="text" class="validate">
           <label for="last_name">Last Name</label>
         </div>
       </div>
@@ -58,7 +58,7 @@ const loginTemplate = () => {
   </section>`;
 }
 
-const cardTemplate = () => {
+const cardTemplate = (data) => {
   return `<div class="col s4">
     <div class="card">
       <div class="card-image">
@@ -66,7 +66,7 @@ const cardTemplate = () => {
         <span class="card-title">Card Title</span>
       </div>
       <div class="card-content">
-        <h6>${scientificName}</h6>
+        <h6>${data.scientific_name}</h6>
       </div>
       <div class="plant-card-footer">
         <div class="card-action">

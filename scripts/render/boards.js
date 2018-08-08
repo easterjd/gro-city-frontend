@@ -12,9 +12,6 @@ if(window.location.href.indexOf("my-boards.html") > -1) {
 async function populateBoards(){
   const resp = await req.getBoards();
   const boards = resp.data.boards;
-
-  console.log(boards)
-
   const body = document.querySelector('#body');
   body.innerHTML = template.boardsBodyTemp()
 

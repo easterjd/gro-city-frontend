@@ -5,6 +5,8 @@ const baseURL = `http://localhost:5000/api`;
 const loginRequest = (body) => axios.post(`${baseURL}/users/login`, body);
 const signUpRequest = (body) => axios.post(`${baseURL}/users/signup`, body);
 
+const plantRequest = () => axios.get(`${baseURL}/plants`)
+
 function getBoards () {
   const token = localStorage.getItem('token');
   return axios.get(`${baseURL}/boards`, {
