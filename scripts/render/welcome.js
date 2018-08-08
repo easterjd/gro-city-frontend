@@ -1,3 +1,5 @@
+const renderBoards = require('./boards.js');
+
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout( () => {
     document.querySelector('#fill').setAttribute("fill", "white")
@@ -12,4 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
     direction: 'alternate',
     loop: 1
   })
+  renderBoards.renderMyBoards();
 })
