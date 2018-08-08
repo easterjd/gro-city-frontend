@@ -17,6 +17,22 @@ async function populateBoards(){
 
   const boardsRow = document.querySelector('#boardsRow')
   boardsRow.innerHTML = template.boardsGroup(boards);
+
+  boardAction(boards);
+}
+
+async function boardAction(boards){
+  const eachBoardButton = document.querySelectorAll('.board-buttons')
+  eachBoardButton.forEach(function(button){
+    const id = button.getAttribute("name")
+    const plants = req.getBoardPlants(id);
+
+    const body = document.querySelector('#body');
+    body.innerHTML = template.boardBodyTemp();
+
+    const plantsRow = document.querySelector('#plantsRow')
+    plantsRow.innerHTML = template.plantsGroup(plants)
+  })
 }
 
 function renderMyBoards(){
