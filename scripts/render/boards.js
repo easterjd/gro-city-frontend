@@ -20,20 +20,32 @@ async function populateBoards(){
   boardsRow.innerHTML = template.boardsGroup(boards);
 
   boardAction(boards);
+  deleteBoardAction()
+}
+
+function deleteBoardAction(){
+  const eachDeleteButton = document.querySelectorAll('.delete-board-buttons')
+
+  eachDeleteButton.forEach(async function(button){
+    button.addEventListener('click', async function(event){
+      const id = button.getAttribute("name")
+      const resp = await req.deleteBoard(id)
+      populateBoards();
+    })
+  })
 }
 
 function boardAction(boards){
   const eachBoardButton = document.querySelectorAll('.board-buttons')
 
-  console.log(eachBoardButton);
+  eachBoardButton.forEach(function(button){
 
-  eachBoardButton.forEach(async function(button){
-    const id = button.getAttribute("name")
-    const board = boards.find(obj => obj.id==id)
-    const resp = await req.getBoardPlants(id)
-    const plants = resp.data.response;
+    button.addEventListener('click', async function(event){
+      const id = button.getAttribute("name")
+      const board = boards.find(obj => obj.id==id)
+      const resp= await req.getBoardPlants(id)
+      const plants = resp.data.response;
 
-    button.addEventListener('click', function(event){
       const body = document.querySelector('#body');
       body.innerHTML = template.boardBodyTemp(board);
 
