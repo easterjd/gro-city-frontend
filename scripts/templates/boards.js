@@ -29,7 +29,7 @@ function boardCard(board){
         <a class="waves-effect waves-light btn white-text" style="top: 10px" href="#">Update Title</a>
       </div>
       <div class="col s6" align="center">
-      <a class="waves-effect waves-light btn white-text" style="top: 10px" href="#">Delete Board</a>
+      <a class="delete-board-buttons waves-effect waves-light btn white-text" name="${board.id}" style="top: 10px" href="#">Delete Board</a>
       </div>
       </div>
       <p>${timeLine}</p>
