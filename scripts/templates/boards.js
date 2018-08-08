@@ -26,7 +26,7 @@ function boardCard(board) {
       <div class="divider"></div>
       <div class="row">
       <div class="col s6" align="center" >
-        <a class="waves-effect waves-light btn white-text update-board" data-board-id="${board.id} style="top: 10px" href="#">Update Title</a>
+        <a class="waves-effect waves-light btn white-text update-board" data-board-id="${board.id}" style="top: 10px" href="#">Update Title</a>
       </div>
       <div class="col s6" align="center">
       <a class="delete-board-buttons waves-effect waves-light btn white-text" name="${board.id}" style="top: 10px" href="#">Delete Board</a>
@@ -110,14 +110,20 @@ function timeFrom(board) {
 }
 
 function updateFormTemplate(title) {
-  return `<input type="text" class="new-title">${title}`
+
+  let input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.classList.add("new-title");
+  input.setAttribute("value", `"${title}"`);
+  input.setAttribute("style", `text-align:center;`);
+
+  return input;
+
 }
 
 function saveTemplate() {
   return `
-    <div class="col s6" style="margin-top: 10px;" align="center">
     <a class="waves-effect waves-light btn white-text save-board" style="top:10px" href="#">Save Title</a>
-    </div>
   `
 }
 

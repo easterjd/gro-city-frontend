@@ -20,6 +20,7 @@ async function populateBoards(){
   boardsRow.innerHTML = template.boardsGroup(boards);
 
   boardAction(boards);
+  updateBoards()
   deleteBoardAction()
 }
 
@@ -63,6 +64,34 @@ function renderMyBoards(){
       event.preventDefault();
       document.location.replace("./views/my-boards.html")
     })
+  })
+}
+function updateBoards() {
+  const updateBoardBtns = Array.from(document.querySelectorAll(".update-board"));
+  updateBoardBtns.forEach(btn => {
+    btn.addEventListener("click", (event) => {
+      event.target.parentNode.innerHTML = template.saveTemplate();
+      const id = btn.getAttribute("data-board-id");
+      const oldTitle = document.querySelector(`.board-buttons[name="${id}"]`);
+      const replaceTitle = template.updateFormTemplate(oldTitle.firstChild.innerHTML);
+      oldTitle.replaceWith(replaceTitle);
+
+       const saveBtn = document.querySelector(".save-board");
+       saveUpdate(id);
+    })
+  })
+}
+
+function saveUpdate(id) {
+  console.log("save");
+  const title = document.querySelector(".new-title");
+  console.log(title);
+  const saveBtn = document.querySelector(".save-board");
+  saveBtn.addEventListener("click", (event) => {
+    req.updateBoard(id, {title})
+    .then((resp) => {
+
+    });
   })
 }
 
