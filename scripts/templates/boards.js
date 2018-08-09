@@ -103,7 +103,7 @@ function plantCard(plant) {
   <div class="col s4">
       <div class="card sticky-action blue">
       <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="http://via.placeholder.com/350x150">
+        <img class="activator" src="${plant.imageUrl}">
         <span class="card-title activator">${plant.scientific_name}</span>
       </div>
       <div class="card-action">
