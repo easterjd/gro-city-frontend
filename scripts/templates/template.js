@@ -70,7 +70,10 @@ const cardTemplate = (data) => {
       </div>
       <div class="plant-card-footer">
         <div class="card-action">
-          <a href="#" class="waves-effect waves-light btn">Add</a>
+        <a class='dropdown-trigger btn waves-effect waves-light' href='#' data-target='plant-id-${data.id}'>Add</a>
+        <!-- Dropdown Structure -->
+        <ul id='plant-id-${data.id}' class='dropdown-content add-dropdown'>
+        </ul>
         </div>
         <div class="card-info">
           <a href="#" class="waves-effect waves-light btn">Info</a>
@@ -79,6 +82,7 @@ const cardTemplate = (data) => {
     </div>
   </div>`
 }
+
 
 module.exports = {
   signupTemplate,

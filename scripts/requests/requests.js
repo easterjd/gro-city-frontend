@@ -52,6 +52,15 @@ function getBoardPlants(id) {
   })
 }
 
+function addPlant (boardId, plantId) {
+  const token = localStorage.getItem('token');
+  return axios.patch(`${baseURL}/boards/${boardId}/${plantId}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  })
+}
+
 module.exports = {
   loginRequest,
   signUpRequest,

@@ -31,7 +31,8 @@ if (window.location.href.indexOf('/views/plants.html') > -1) {
     });
     formListeners()
     const somePlants = await getSomePlants(searchState, page)
-    renderPlants(somePlants)
+    // renderPlants(somePlants)
+    getBoards(somePlants)
   });
 }
 
@@ -268,13 +269,45 @@ async function search (searchState, page) {
   //   }
   //   return true
   // })
-  renderPlants(somePlants)
+  // renderPlants(somePlants)
+  getBoards(somePlants)
 }
 
-function renderPlants (array) {
+function renderPlants (array, response) {
   var container = document.querySelector('.plant-cards-container')
+
   container.innerHTML = ""
   array.data.response.forEach(plant => {
     container.innerHTML += templates.cardTemplate(plant)
+    const ulTag = document.querySelector(`#plant-id-${plant.id}`)
+    renderDropDwn(response, ulTag)
   })
+  var elems2 = document.querySelectorAll('.dropdown-trigger');
+  var instances2 = M.Dropdown.init(elems2, {options:""});
+}
+
+async function getBoards(somePlants){
+  const response = await request.getBoards();
+  renderPlants(somePlants, response);
+}
+
+function renderDropDwn(array, ulTag) {
+  array.data.boards.forEach(board => {
+    let li = `<li><a dropdown-id="${board.id}" href="#!">${board.title}</a></li>`;
+    ulTag.innerHTML += li;
+  })
+}
+
+function addPlants(liArray){
+  liArray.forEach(li => {
+    li.addEventListener("click", (event) => {
+    let boardId =  event.target.getAttribute("dropdown-id")
+    let plantId = event.target.parentNode.getAttribute("id").substring(9)
+    addPlantsRequest(boardId, plantId)
+    })
+  })
+}
+
+async function addPlantsRequest(boardId, plantId){
+  const response = await request.addPlant(boardId, plantId);
 }
