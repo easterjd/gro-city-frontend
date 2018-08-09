@@ -81,6 +81,28 @@ function boardAction(boards){
 
       const plantsRow = document.querySelector('#plantsRow')
       plantsRow.innerHTML = template.plantsGroup(plants)
+      removePlantFromBoard();
+    })
+  })
+}
+
+function removePlantFromBoard(){
+  const removeButtons = document.querySelectorAll('.remove-plant-from-board');
+
+  removeButtons.forEach(button=>{
+    button.addEventListener('click', async function(event){
+      const plantId = button.getAttribute("name")
+
+      const boardId = document.querySelector('#plantsRow').getAttribute("name")
+
+      const deleted= await req.deletePlantFromBoard(boardId, plantId);
+
+      const resp= await req.getBoardPlants(boardId)
+      const plants = resp.data.response;
+
+      const plantsRow = document.querySelector('#plantsRow')
+      plantsRow.innerHTML = template.plantsGroup(plants)
+      removePlantFromBoard();
     })
   })
 }
