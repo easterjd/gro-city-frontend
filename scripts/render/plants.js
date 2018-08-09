@@ -49,7 +49,6 @@ function formListeners () {
   searchShade()
   searchMinTemp()
   searchBloom()
-  pagination()
 }
 
 async function getPlants() {
@@ -83,7 +82,7 @@ function searchName() {
   nameInput.addEventListener('blur', (e) => {
     searchState.scientific_name = nameInput.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   })
 }
@@ -94,7 +93,7 @@ function searchDuration() {
     console.log(e.target.value)
     searchState.data.duration = e.target.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   }))
 }
@@ -105,7 +104,7 @@ function searchHabit () {
     console.log(habitInput.value)
     searchState.data.habit = habitInput.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   })
 }
@@ -116,7 +115,7 @@ function searchGrowth () {
     console.log(growthInput.value)
     searchState.data.growPeriod = growthInput.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   })
 }
@@ -127,7 +126,7 @@ function searchFlowerColor () {
     console.log(colorInput.value)
     searchState.data.flowerColor = colorInput.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   })
 }
@@ -138,7 +137,7 @@ function searchFlowerConsp() {
     console.log(e.target.value)
     searchState.data.flowerConsp = e.target.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   }))
 }
@@ -165,7 +164,7 @@ function searchSoil() {
       searchState.data.fineSoil = ""
     }
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   }))
 }
@@ -176,7 +175,7 @@ function searchMoisture() {
     console.log(moistureInput.value)
     searchState.data.moisture = moistureInput.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   })
 }
@@ -187,7 +186,7 @@ function searchShade() {
     console.log(e.target.value)
     searchState.data.shade = e.target.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   }))
 }
@@ -198,7 +197,7 @@ function searchMinTemp() {
     console.log(tempInput.value)
     searchState.data.tempMin = tempInput.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   })
 }
@@ -217,14 +216,24 @@ function searchBloom() {
     console.log(bloomInput.value)
     searchState.data.bloomPeriod = bloomInput.value
     setTimeout( () => {
-      search(searchState, page)
+      search(searchState)
     }, 2000)
   })
 }
 
+function makePages (pageNum) {
+  const pageContainer = document.querySelector('.pagination')
+  pageContainer.innerHTML = ""
+  for (let i = 0; i < pageNum - 1; i++) {
+    let num = i + 1
+    let pageTemp = `<li class="waves-effect"><a href="#!">${num}</a></li>`
+    pageContainer.innerHTML += pageTemp
+  }
+}
+
 function pagination () {
   const pages = Array.from(document.querySelectorAll('.pagination a'))
-  pages.forEach(pageNum => pageNum.addEventListener('click', (e) => {
+  pages.forEach( pageNum => pageNum.addEventListener('click', (e) => {
     e.preventDefault()
     const number = e.target.innerHTML
     pages.forEach(pageNum => {
@@ -236,11 +245,15 @@ function pagination () {
     console.log(number)
     page = number
     console.log(page)
-    search(searchState, page)
+    return getSomePlants(searchState, page)
+    .then(somePlants => {
+      renderPlants(somePlants)
+    })
   }))
 }
 
-async function search (searchState, page) {
+async function search (searchState) {
+  page = 1
   const somePlants = await getSomePlants(searchState, page)
   // const allPlants = await getPlants()
   // const filterPlants = allPlants.filter(plant => {
@@ -271,10 +284,16 @@ async function search (searchState, page) {
   renderPlants(somePlants)
 }
 
-function renderPlants (array) {
+function renderPlants (data) {
   var container = document.querySelector('.plant-cards-container')
   container.innerHTML = ""
-  array.data.response.forEach(plant => {
+  data.data.response.dataSlice.forEach(plant => {
     container.innerHTML += templates.cardTemplate(plant)
   })
+  // if (page > data.data.response.pageAmount) {
+  //   page = 1
+  //   search(searchState, page)
+  // }
+  makePages(data.data.response.pageAmount)
+  pagination()
 }
