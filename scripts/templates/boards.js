@@ -4,7 +4,7 @@ function boardsBodyTemp(boards) {
   return `
   <div class="row" id="boardNav">
     <div class="col s12">
-      <h4 align="center">My Boards</h4>
+      <h4 class="white-text" align="center">My Boards</h4>
     </div>
    </div>
 
@@ -60,7 +60,7 @@ function boardsGroup(boards) {
 function boardCard(board) {
   const timeLine = timeFrom(board);
   return `
-  <div class="col s4" style="border: 1px solid #42a5f5;">
+  <div class="col s4 board-card">
     <div class="container" align="center">
         <a class="board-buttons waves-effect waves-teal btn-flat" name="${board.id}" style="padding-bottom: 50px;"><h5>${board.title}</h5></a>
       <div class="divider"></div>
