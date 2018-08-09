@@ -10,6 +10,11 @@ function boardsBodyTemp(boards) {
 
    <div class="row" id="boardsRow">
    </div>
+   <div class="row" style="position: relative; bottom:10px;">
+     <div class="col s12" align="right">
+     <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    </div>
+    </div>
   `
 }
 
@@ -26,10 +31,10 @@ function boardCard(board) {
       <div class="divider"></div>
       <div class="row">
       <div class="col s6" align="center" >
-        <a class="waves-effect waves-light btn white-text update-board" data-board-id="${board.id}" style="top: 10px" href="#">Update Title</a>
+        <a class="waves-effect waves-light btn white-text update-board" data-board-id="${board.id}" style="top: 10px;" href="#">Update Title</a>
       </div>
       <div class="col s6" align="center">
-      <a class="delete-board-buttons waves-effect waves-light btn white-text" name="${board.id}" style="top: 10px" href="#">Delete Board</a>
+      <a class="delete-board-buttons waves-effect waves-light btn white-text" name="${board.id}" style="top: 10px;" href="#">Delete Board</a>
       </div>
       </div>
       <p>${timeLine}</p>
@@ -45,7 +50,7 @@ function boardBodyTemp(board) {
       <h4 align="center">${board.title}</h4>
     </div>
     <div class="col s1" align="right">
-      <a class="waves-effect waves-light btn white-text" style="top: 30px" href="./my-boards.html">My Boards</a>
+      <a class="waves-effect waves-light btn white-text" style="top: 30px;" href="./my-boards.html">My Boards</a>
     </div>
   </div>
 
@@ -123,7 +128,7 @@ function updateFormTemplate(title) {
 
 function saveTemplate() {
   return `
-    <a class="waves-effect waves-light btn white-text save-board" style="top:10px" href="#">Save Title</a>
+    <a class="waves-effect waves-light btn white-text save-board" style="top:10px;" href="#">Save Title</a>
   `
 }
 
