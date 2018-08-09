@@ -54,7 +54,7 @@ function getBoardPlants(id) {
 
 function addPlant (boardId, plantId) {
   const token = localStorage.getItem('token');
-  return axios.patch(`${baseURL}/boards/${boardId}/${plantId}`, {
+  return axios.post(`${baseURL}/boards/${boardId}/plants/${plantId}`, {
     headers: {
       authorization: `Bearer ${token}`
     }
@@ -70,5 +70,6 @@ module.exports = {
   deleteBoard,
   getBoardPlants,
   plantRequest,
-  plantPage
+  plantPage,
+  addPlant
 }

@@ -6,7 +6,6 @@ const req = require('../requests/requests.js')
 if(window.location.href.indexOf("my-boards.html") > -1) {
   document.addEventListener('DOMContentLoaded', () => {
     populateBoards();
-
   })
 }
 
@@ -20,8 +19,38 @@ async function populateBoards(){
   boardsRow.innerHTML = template.boardsGroup(boards);
 
   boardAction(boards);
-  updateBoards()
-  deleteBoardAction()
+  updateBoards();
+  deleteBoardAction();
+  populateNewBoardForm();
+}
+
+function populateNewBoardForm(){
+  const row = document.querySelector('#newBoardForm');
+
+  const populateFormButton = document.querySelector('#populateNewBoardFormButton');
+
+  populateFormButton.addEventListener('click', ()=>{
+    const toggle = populateFormButton.getAttribute("name")
+    if(toggle==="0"){//no form is up
+      row.innerHTML=template.newBoardFormTemp();
+      populateFormButton.setAttribute("name", "1")
+      submitNewBoardAction();
+    } else {
+      row.innerHTML=""
+      populateFormButton.setAttribute("name", "0")
+    }
+  })
+}
+
+function submitNewBoardAction(){
+  const submit = document.querySelector('#submitNewBoard')
+  submit.addEventListener('click', async function(event){
+    event.preventDefault()
+    const title = document.querySelector('#new-board-title').value
+    const body = { title }
+    const resp = await req.createBoard(body);
+    populateBoards();
+  })
 }
 
 function deleteBoardAction(){
