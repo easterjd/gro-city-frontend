@@ -6,10 +6,6 @@ body {
   position: relative;
 }
 
-nav .brand-logo {
-  margin-left: 5%;
-}
-
 nav {
   background: rgba(0, 0, 0, 0.2);
 }
@@ -32,6 +28,18 @@ button {
   position: absolute;
   top: 50%;
   left: 80%;
+}
+
+#lineDrawing {
+  margin: 100px;
+  width: 500px;
+  position: absolute;
+  top: 100%;
+  left: 2%
+}
+
+.desc {
+  margin-top: 0;
 }
 
 .login {
