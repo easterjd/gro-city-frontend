@@ -6,6 +6,7 @@ const req = require('../requests/requests.js')
 if(window.location.href.indexOf("my-boards.html") > -1) {
   document.addEventListener('DOMContentLoaded', () => {
     populateBoards();
+
   })
 }
 
