@@ -10,12 +10,47 @@ function boardsBodyTemp(boards) {
 
    <div class="row" id="boardsRow">
    </div>
+
    <div class="row" style="position: relative; bottom:10px;">
      <div class="col s12" align="right">
-     <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" id="populateNewBoardFormButton" name="0"><i class="material-icons">add</i></a>
+      </div>
     </div>
+
+      <div class="row" id="newBoardForm" >
+      </div>
+
+      <div class="row" id="clearSpace" >
+        <br>
+        <br>
+        <br>
+      </div>
+`
+}
+
+function newBoardFormTemp(){
+  return `
+    <form class="col s3 offset-s9">
+    <div class="card">
+      <div class="container">
+        <div class="row">
+          <div class="col s12" align="center">
+            <h5>Create New Board</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="new-board-title" type="text" class="validate">
+            <label for="new-board-title">Title</label>
+          </div>
+        </div>
+        <div class="container" align="center">
+          <button class="btn waves-effect waves-light" id="submitNewBoard" type="submit">Submit</button>
+        </div>
+        <br>
+      </div>
     </div>
-  `
+    </form>`
 }
 
 function boardsGroup(boards) {
@@ -140,5 +175,6 @@ module.exports = {
   plantsGroup,
   plantCard,
   saveTemplate,
-  updateFormTemplate
+  updateFormTemplate,
+  newBoardFormTemp
 }
