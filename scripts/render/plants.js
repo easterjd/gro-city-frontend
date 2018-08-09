@@ -31,7 +31,8 @@ if (window.location.href.indexOf('/views/plants.html') > -1) {
     });
     formListeners()
     const somePlants = await getSomePlants(searchState, page)
-    renderPlants(somePlants)
+    // renderPlants(somePlants)
+    getBoards(somePlants)
   });
 }
 
@@ -247,7 +248,8 @@ function pagination () {
     console.log(page)
     return getSomePlants(searchState, page)
     .then(somePlants => {
-      renderPlants(somePlants)
+      // renderPlants(somePlants)
+      getBoards(somePlants)
     })
   }))
 }
@@ -281,14 +283,18 @@ async function search (searchState) {
   //   }
   //   return true
   // })
-  renderPlants(somePlants)
+  // renderPlants(somePlants)
+  getBoards(somePlants)
 }
 
-function renderPlants (data) {
+function renderPlants (data, response) {
   var container = document.querySelector('.plant-cards-container')
+
   container.innerHTML = ""
   data.data.response.dataSlice.forEach(plant => {
     container.innerHTML += templates.cardTemplate(plant)
+    const ulTag = document.querySelector(`#plant-id-${plant.id}`)
+    renderDropDwn(response, ulTag)
   })
   // if (page > data.data.response.pageAmount) {
   //   page = 1
@@ -296,4 +302,37 @@ function renderPlants (data) {
   // }
   makePages(data.data.response.pageAmount)
   pagination()
+  var elems2 = document.querySelectorAll('.dropdown-trigger');
+  var instances2 = M.Dropdown.init(elems2, {options:""});
+  addPlants();
+}
+
+async function getBoards(somePlants){
+  const response = await request.getBoards();
+  renderPlants(somePlants, response);
+}
+
+function renderDropDwn(array, ulTag) {
+  array.data.boards.forEach(board => {
+    let li = `<li><a href="#!" dropdown-id="${board.id}" class="addPlant">${board.title}</a></li>`;
+    ulTag.innerHTML += li;
+  })
+}
+
+function addPlants(){
+  const aArray = document.querySelectorAll(".addPlant")
+  aArray.forEach(aTag => {
+    if (aTag.nodeName.toLowerCase() === 'a') {
+      aTag.addEventListener("click", (event) => {
+        addPlantsRequest(event)
+      })
+    }
+  })
+}
+
+async function addPlantsRequest(event) {
+  let boardId =  event.target.getAttribute("dropdown-id")
+  let plantId = event.target.parentNode.parentNode.getAttribute("id").substring(9)
+  const response = await request.addPlant(boardId, plantId);
+  return response;
 }
