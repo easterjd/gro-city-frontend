@@ -101,11 +101,14 @@ function plantsGroup(plants) {
 function plantCard(plant) {
   return `
   <div class="col s4">
-      <div class="card medium blue">
-      <div class="card-content activator blue darken-1 waves-effect waves-block waves-light">
-        <span class="card-title activator grey-text text-darken-4">${plant.scientific_name}<i class="material-icons right">more_vert</i></span>
+      <div class="card sticky-action blue">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="http://via.placeholder.com/350x150">
+        <span class="card-title activator">${plant.scientific_name}</span>
       </div>
-        <a name="${plant.id}" class="remove-plant-from-board waves-effect waves-light btn white-text" href="#" style="position: absolute; bottom: 30px; right: 30px;">Remove</a>
+      <div class="card-action">
+        <a name="${plant.id}" class="remove-plant-from-board waves-effect waves-light btn white-text" href="#">Remove</a>
+        </div>
       <div class="card-reveal">
         <span class="card-title black-text">${plant.scientific_name}<i class="material-icons right">close</i></span>
         <p style="position: absolute; left: 10%;">

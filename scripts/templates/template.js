@@ -60,23 +60,39 @@ const loginTemplate = () => {
 
 const cardTemplate = (data) => {
   return `<div class="col s4">
-    <div class="card">
-      <div class="card-image">
-        <img src="http://via.placeholder.com/350x150">
-        <span class="card-title">Card Title</span>
+    <div class="card sticky-action blue">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="http://via.placeholder.com/350x150">
+        <span class="card-title activator">${data.scientific_name}</span>
       </div>
-      <div class="card-content">
-        <h6>${data.scientific_name}</h6>
-      </div>
-      <div class="plant-card-footer">
-        <div class="card-action">
+      <div class="card-action">
         <a class='dropdown-trigger btn waves-effect waves-light' href='#' data-target='plant-id-${data.id}'>Add</a>
         <!-- Dropdown Structure -->
         <ul id='plant-id-${data.id}' class='dropdown-content add-dropdown'>
         </ul>
         </div>
-        <div class="card-info">
-          <a href="#" class="waves-effect waves-light btn">Info</a>
+        <div class="card-reveal">
+          <span class="card-title black-text">${data.scientific_name}<i class="material-icons right">close</i></span>
+          <p style="position: absolute; left: 10%;">
+            Symbol: ${data.data.symbol}<br>
+            Location: ${data.data.state}<br>
+            Category: ${data.data.category}<br>
+            Duration: ${data.data.duration}<br>
+            Habit: ${data.data.habit}<br>
+            Invasive: ${data.data.invasive}<br>
+            Grow Period: ${data.data.growPeriod}<br>
+            Flower Color: ${data.data.flowerColor}<br>
+            Flower Conspicuous: ${data.data.flowerConsp}<br>
+            Foliage Color: ${data.data.foliageColor}<br>
+            Coarse Soil: ${data.data.coarseSoil}<br>
+            Medium Soil: ${data.data.medSoil}<br>
+            Fine Soil: ${data.data.fineSoil}<br>
+            Moisture: ${data.data.moisture}<br>
+            Shade: ${data.data.shade}<br>
+            Temperature Minimum: ${data.data.tempMin} °F<br>
+            Bloom Period: ${data.data.bloomPeriod}<br>
+            Commercial Availability: ${data.data.commAvailability}
+        </p>
         </div>
       </div>
     </div>
