@@ -1,0 +1,48 @@
+.filter-div {
+  /* border: 2px solid black; */
+  width: min-content;
+  padding: 0px;
+  height: 83vh;
+  overflow: hidden;
+}
+
+.filter-div:hover {
+  overflow-y: auto;
+}
+
+.filter-form .row .col {
+  margin: 0px;
+}
+
+.duration-radio-div, .flower-conspicuous-radio-div, .soil-type-radio-div, .shade-tolerance-radio-div {
+  display: flex;
+}
+
+.plant-card-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid grey;
+}
+
+.card-info {
+  margin-top: 16px;
+  padding-right: 10px;
+}
+
+[type="radio"]:not(:checked)+span, [type="radio"]:checked+span {
+  padding-left: 25px !important;
+}
+
+.filter-div * {
+  font-size: small !important;
+}
+
+.row .col.l3 {
+  width: 20% !important;
+}
+
+.pagination {
+  justify-content: center;
+  padding-bottom: 100px;
+  margin: auto;
+}
