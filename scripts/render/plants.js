@@ -330,9 +330,9 @@ function addPlants(){
   })
 }
 
-function addPlantsRequest(event) {
+async function addPlantsRequest(event) {
   let boardId =  event.target.getAttribute("dropdown-id")
   let plantId = event.target.parentNode.parentNode.getAttribute("id").substring(9)
-  const response = request.addPlant(boardId, plantId);
+  const response = await request.addPlant(boardId, plantId);
   return response;
 }

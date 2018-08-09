@@ -7,7 +7,7 @@ const signUpRequest = (body) => axios.post(`${baseURL}/users/signup`, body);
 const plantRequest = () => axios.get(`${baseURL}/plants`)
 const plantPage = (body, page) => axios.post(`${baseURL}/plants/${page}`, body)
 
-function getBoards () {
+function getBoards() {
   const token = localStorage.getItem('token');
   return axios.get(`${baseURL}/boards`, {
     headers: {
@@ -16,7 +16,7 @@ function getBoards () {
   })
 }
 
-function createBoard (body) {
+function createBoard(body) {
   const token = localStorage.getItem('token');
   return axios.post(`${baseURL}/boards`, body, {
     headers: {
@@ -25,7 +25,7 @@ function createBoard (body) {
   })
 }
 
-function updateBoard (id, body) {
+function updateBoard(id, body) {
   const token = localStorage.getItem('token');
   return axios.patch(`${baseURL}/boards/${id}`, body, {
     headers: {
@@ -34,7 +34,7 @@ function updateBoard (id, body) {
   })
 }
 
-function deleteBoard (id) {
+function deleteBoard(id) {
   const token = localStorage.getItem('token');
   return axios.delete(`${baseURL}/boards/${id}`, {
     headers: {
@@ -52,9 +52,19 @@ function getBoardPlants(id) {
   })
 }
 
-function addPlant (boardId, plantId) {
+function deletePlantFromBoard(boardId, plantId) {
   const token = localStorage.getItem('token');
-  return axios.post(`${baseURL}/boards/${boardId}/plants/${plantId}`, {
+  return axios.delete(`${baseURL}/boards/${boardId}/plants/${plantId}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  })
+}
+
+function addPlant(boardId, plantId) {
+  const token = localStorage.getItem('token');
+  return axios(`${baseURL}/boards/${boardId}/plants/${plantId}`, {
+    method: 'POST',
     headers: {
       authorization: `Bearer ${token}`
     }
@@ -71,5 +81,6 @@ module.exports = {
   getBoardPlants,
   plantRequest,
   plantPage,
+  deletePlantFromBoard,
   addPlant
 }

@@ -89,7 +89,7 @@ function boardBodyTemp(board) {
     </div>
   </div>
 
-  <div class="row" id="plantsRow">
+  <div class="row" id="plantsRow" name="${board.id}">
   </div>
   `
 }
@@ -105,7 +105,7 @@ function plantCard(plant) {
       <div class="card-content activator blue darken-1 waves-effect waves-block waves-light">
         <span class="card-title activator grey-text text-darken-4">${plant.scientific_name}<i class="material-icons right">more_vert</i></span>
       </div>
-        <a class="waves-effect waves-light btn white-text" href="#" style="position: absolute; bottom: 30px; right: 30px;">Remove</a>
+        <a name="${plant.id}" class="remove-plant-from-board waves-effect waves-light btn white-text" href="#" style="position: absolute; bottom: 30px; right: 30px;">Remove</a>
       <div class="card-reveal">
         <span class="card-title black-text">${plant.scientific_name}<i class="material-icons right">close</i></span>
         <p style="position: absolute; left: 10%;">
