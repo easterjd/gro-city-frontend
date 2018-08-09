@@ -7,6 +7,8 @@ const signUpRequest = (body) => axios.post(`${baseURL}/users/signup`, body);
 const plantRequest = () => axios.get(`${baseURL}/plants`)
 const plantPage = (body, page) => axios.post(`${baseURL}/plants/${page}`, body)
 
+// const imageRequest = () => axios.get(``)
+
 function getBoards() {
   const token = localStorage.getItem('token');
   return axios.get(`${baseURL}/boards`, {
