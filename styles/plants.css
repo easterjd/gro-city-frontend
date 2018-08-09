@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+.dropdown-content {
+  width: 200px !important;
+}
+
 .filter-div:hover {
   overflow-y: auto;
 }
