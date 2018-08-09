@@ -52,6 +52,15 @@ function getBoardPlants(id) {
   })
 }
 
+function deletePlantFromBoard(boardId, plantId){
+  const token = localStorage.getItem('token');
+  return axios.delete(`${baseURL}/boards/${boardId}/plants/${plantId}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  })
+}
+
 module.exports = {
   loginRequest,
   signUpRequest,
@@ -61,5 +70,6 @@ module.exports = {
   deleteBoard,
   getBoardPlants,
   plantRequest,
-  plantPage
+  plantPage,
+  deletePlantFromBoard
 }
