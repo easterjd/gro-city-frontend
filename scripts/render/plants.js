@@ -314,7 +314,7 @@ async function getBoards(somePlants){
 
 function renderDropDwn(array, ulTag) {
   array.data.boards.forEach(board => {
-    let li = `<li><a href="#!" dropdown-id="${board.id}" class="addPlant">${board.title}</a></li>`;
+    let li = `<li><a onclick="M.toast({html: 'Added to ${board.title}'})" href="#!" dropdown-id="${board.id}" class="addPlant">${board.title}</a></li>`;
     ulTag.innerHTML += li;
   })
 }
