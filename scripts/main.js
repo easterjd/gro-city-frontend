@@ -4,7 +4,7 @@ const authorize = require('./authorization/authorize');
 const renderPlants = require('./render/plants.js')
 const request = require('./requests/requests.js')
 
-if ( window.location.href === "http://127.0.0.1:52170/") {
+if ( window.location.href === "http://127.0.0.1:54701/") {
   document.location.replace('/index.html')
 }
 
