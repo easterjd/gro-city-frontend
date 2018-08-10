@@ -1,13 +1,36 @@
 nav {
-  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  z-index: 100;
+  background: rgba(0,0,0,0.5)
+}
+
+.card .card-action {
+  background: #39755A
 }
 
 .filter-div {
-  /* border: 2px solid black; */
-  width: min-content;
-  padding: 0px;
-  height: 83vh;
-  overflow: hidden;
+  height: 81vh;
+  position: fixed;
+  top: 9%;
+  left: 0px;;
+}
+
+.filter-div-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-div-header:nth-child(2){
+  color: #03A9F4;
+}
+
+.plant-view {
+  margin-left: 25% !important;
+  margin-top: 5% !important;
+}
+
+.dropdown-content {
+  width: 200px !important;
 }
 
 .filter-div:hover {
@@ -38,15 +61,34 @@ nav {
 }
 
 .filter-div * {
-  font-size: small !important;
+  font-size: medium !important;
 }
 
 .row .col.l3 {
-  width: 20% !important;
+  width: 23% !important;
 }
 
 .pagination {
   justify-content: center;
   padding-bottom: 100px;
   margin: auto;
+}
+
+.plant-image {
+  height: 400px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+span.card-title.activator {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 5px !important;
+  text-align: center;
+}
+
+footer {
+  z-index: 100;
 }
