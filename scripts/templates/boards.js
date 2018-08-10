@@ -102,7 +102,7 @@ function plantCard(plant) {
   return `
   <div class="col s4">
       <div class="card sticky-action blue">
-      <div class="plant-image card-image waves-effect waves-block waves-light" style="background-image:url('${plant.imageUrl}');">
+      <div class="plant-image activator card-image waves-effect waves-block waves-light" style="background-image:url('${plant.imageUrl}');">
 
         <span class="card-title activator">${plant.scientific_name}</span>
       </div>
@@ -130,6 +130,10 @@ function plantCard(plant) {
           Temperature Minimum: ${plant.data.tempMin} °F<br>
           Bloom Period: ${plant.data.bloomPeriod}<br>
           Commercial Availability: ${plant.data.commAvailability}
+          <br>
+          <br>
+          <br>
+          <br>
       </p>
       </div>
     </div>
