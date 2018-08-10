@@ -4,7 +4,7 @@ const authorize = require('./authorization/authorize');
 const renderPlants = require('./render/plants.js')
 const request = require('./requests/requests.js')
 
-if ( window.location.href === "http://127.0.0.1:60462/") {
+if ( window.location.href === "https://gro-city.surge.sh/") {
   document.location.replace('/index.html')
 }
 
