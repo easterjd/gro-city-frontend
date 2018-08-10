@@ -1,4 +1,4 @@
-const baseURL = `http://localhost:5000/api`;
+const baseURL = `https://gro-city-backend.herokuapp.com/api`;
 
 // API calls using axios
 const loginRequest = (body) => axios.post(`${baseURL}/users/login`, body);
