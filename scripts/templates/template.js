@@ -61,7 +61,7 @@ const loginTemplate = () => {
 const cardTemplate = (data) => {
   return `<div class="col s4">
     <div class="card sticky-action blue">
-      <div class="plant-image card-image waves-effect waves-block waves-light" style="background-image:url('${data.imageUrl}');">
+      <div class="plant-image activator card-image waves-effect waves-block waves-light" style="background-image:url('${data.imageUrl}');">
         <span class="card-title activator">${data.scientific_name}</span>
       </div>
       <div class="card-action">
@@ -91,6 +91,10 @@ const cardTemplate = (data) => {
             Temperature Minimum: ${data.data.tempMin} °F<br>
             Bloom Period: ${data.data.bloomPeriod}<br>
             Commercial Availability: ${data.data.commAvailability}
+            <br>
+            <br>
+            <br>
+            <br>
         </p>
         </div>
       </div>
