@@ -91,6 +91,12 @@ function boardBodyTemp(board) {
 
   <div class="row" id="plantsRow" name="${board.id}">
   </div>
+
+  <div class="row" id="clearSpace" >
+    <br>
+    <br>
+    <br>
+  </div>
   `
 }
 
