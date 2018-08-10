@@ -42,7 +42,10 @@
 
     <div class="col s12 m4 l3 filter-div z-depth-4">
       <!-- Grey filter panel -->
-      <h6>Filter By: </h6>
+      <div class="filter-div-header">
+        <h6>Filter By: </h6>
+        <h6><a style="float:right;" class="clear-filter" href="#">Clear filter</a></h6>
+      </div>
       <form class="filter-form" action="index.html" method="post">
         <div class="row">
           <div class="input-field col s10">
@@ -55,7 +58,7 @@
             <div class="duration-radio-div">
               <p>
                 <label>
-                <input value="Annual" name="duration" type="radio" checked />
+                <input value="Annual" name="duration" type="radio" />
                 <span>Annual</span>
               </label>
               </p>
@@ -113,7 +116,7 @@
             <div class="flower-conspicuous-radio-div">
               <p>
                 <label>
-                <input value="Yes" name="flower-conspicuous" type="radio" checked />
+                <input value="Yes" name="flower-conspicuous" type="radio"/>
                 <span>Yes</span>
               </label>
               </p>
@@ -131,7 +134,7 @@
             <div class="soil-type-radio-div">
               <p>
                 <label>
-                <input value="Medium" class="soil medium" name="soil" type="radio" checked />
+                <input value="Medium" class="soil medium" name="soil" type="radio"/>
                 <span>Medium</span>
               </label>
               </p>
@@ -164,7 +167,7 @@
             <div class="shade-tolerance-radio-div">
               <p>
                 <label>
-                <input value="Tolerant" class="shade medium" name="shade" type="radio" checked />
+                <input value="Tolerant" class="shade medium" name="shade" type="radio" />
                 <span>Tolerant</span>
               </label>
               </p>
@@ -208,7 +211,7 @@
       </form>
     </div>
 
-    <div class="col s12 m8 l9">
+    <div class="col s12 m8 l9 plant-view">
       <div class="row plant-cards-container">
 
       </div>

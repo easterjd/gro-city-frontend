@@ -61,12 +61,11 @@ const loginTemplate = () => {
 const cardTemplate = (data) => {
   return `<div class="col s4">
     <div class="card sticky-action blue">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="${data.imageUrl}">
+      <div class="plant-image card-image waves-effect waves-block waves-light" style="background-image:url('${data.imageUrl}');">
         <span class="card-title activator">${data.scientific_name}</span>
       </div>
       <div class="card-action">
-        <a class='dropdown-trigger btn waves-effect waves-light' href='#' data-target='plant-id-${data.id}'>Add</a>
+        <a class='dropup-trigger btn waves-effect waves-light' href='#' data-target='plant-id-${data.id}'>Add</a>
         <!-- Dropdown Structure -->
         <ul id='plant-id-${data.id}' class='dropdown-content add-dropdown'>
         </ul>

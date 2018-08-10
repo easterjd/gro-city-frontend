@@ -33,9 +33,18 @@ if (window.location.href.indexOf('/views/plants.html') > -1) {
     const somePlants = await getSomePlants(searchState, page)
     // renderPlants(somePlants)
     getBoards(somePlants)
+    clearFilter();
   });
 }
 
+function clearFilter(){
+  console.log("hello");
+  const clearFilter = document.querySelector(".clear-filter");
+  clearFilter.addEventListener("click", async () => {
+    console.log("hi");
+    location.reload();
+  })
+}
 
 function formListeners () {
   // getPlants()
@@ -302,8 +311,8 @@ function renderPlants (data, response) {
   // }
   makePages(data.data.response.pageAmount)
   pagination()
-  var elems2 = document.querySelectorAll('.dropdown-trigger');
-  var instances2 = M.Dropdown.init(elems2, {options:""});
+  var elems2 = document.querySelectorAll('.dropup-trigger');
+  var instances2 = M.Dropdown.init(elems2, {belowOrigin:true});
   addPlants();
 }
 

@@ -102,8 +102,8 @@ function plantCard(plant) {
   return `
   <div class="col s4">
       <div class="card sticky-action blue">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="${plant.imageUrl}">
+      <div class="plant-image card-image waves-effect waves-block waves-light" style="background-image:url('${plant.imageUrl}');">
+
         <span class="card-title activator">${plant.scientific_name}</span>
       </div>
       <div class="card-action">
