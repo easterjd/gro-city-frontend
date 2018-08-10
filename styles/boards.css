@@ -13,3 +13,22 @@ nav {
 .board-card {
   background: rgba(255,255,255, 0.5);
 }
+
+.plant-image {
+  height: 400px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+span.card-title.activator {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 5px !important;
+  text-align: center;
+}
+
+footer {
+  z-index: 100;
+}
