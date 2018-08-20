@@ -43,7 +43,7 @@ With Gro.City, users are able to create planting project boards (similar to Pint
     -the previous step will open the frontend program in your browser using live-server, connected to the backend deployed with Heroku
 
 
-### TO USE TASK MANAGER ONLINE
+### TO USE GRO.CITY ONLINE
 
 <a href="https://gro-city.surge.sh/">Gro.City!</a>
 
