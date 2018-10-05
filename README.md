@@ -63,6 +63,6 @@ With Gro.City, users are able to create planting project boards (similar to Pint
 
 ### DEVELOPERS
 
-    -For more information, pleasee contact this project's developers: Surya Krishna Moorthy, Christopher Peterson, or Dillon Easter at:   
+    -For more information, please contact this project's developers: Surya Krishna Moorthy, Christopher Peterson, or Dillon Easter at:   
 
         ayrus2289@gmail.com, crpete23@gmail.com, or johndilloneaster@gmail.com
